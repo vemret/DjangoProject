@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>{% block title %} Blogger Website {% endblock %}</title>
+    <meta name="description" content="{% block description %} Aciklama {% endblock %}">
+    <meta name="keywords" content="{% block keywords %} keywords {% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    {% load static %}
+    <!-- Import Icon Packs -->
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/elegent-icons.css'%}">
+
+    <!-- Import External Scrpit CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css'%}">
+
+    <!-- Import Template CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/header.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/themes.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css'%}">
+
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js'%}"></script> -->
+
+    <script src="{% static 'assets/js/modernizr-2.8.3.min.js'%}"></script>
+    {% block head %}  {% endblock %}
+</head>
+<body>
+    <div class="overlay-wrapper">
+    {% include 'header.html' %}
+        {% block sidebar %}  {% endblock %}
+        {% block slider %}  {% endblock %}
+    {% block content %}  {% endblock %}
+ {% include 'footer.html' %}
+    {% block foot %}  {% endblock %}
+    </div>
+    <script src="{% static 'assets/js/plugins.js'%}"></script>
+    <script src="{% static 'assets/js/main.js'%}"></script>
+</body>
+</html>
