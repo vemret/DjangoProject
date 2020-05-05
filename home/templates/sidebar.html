@@ -1,9 +1,13 @@
 {% load static %}
+{% if page %}
 <header class="masthead">
 
-    <div class="header-top">
+    <div class="header-top show">
         <div class="container">
-            <div class="side-menu-trigger"><span class="trigger-icon"><i class="icon_menu"></i></span></div><!-- /.side-menu-trigger -->
+
+
+
+            <div class="side-menu-trigger"><span class="trigger-icon"><i class="icon_menu" ></i>Category</span></div><!-- /.side-menu-trigger -->
             <a class="navbar-brand hidden-xs" href="./"><img src="{% static 'images/logo.png'%}" alt="Site Logo"></a>
             <div class="menu-search">
                 <div class="form-trigger"><i class="icon_search"></i></div>
@@ -11,6 +15,8 @@
                     <input type="text" name="search" id="menu-search" placeholder="Search here..">
                 </form>
             </div>
+
+
 
             <nav class="sidebar-menu">
                 <a class="navbar-brand" href="./"><img src="{% static 'images/logo2.png'%}" alt="Site Logo"></a>
@@ -43,6 +49,7 @@
                     </li>
                     <li class="menu-item"><a href="categories.html">Categories</a></li>
                     <li class="menu-item"><a href="about.html">About</a></li>
+                    <li class="menu-item"><a href="about.html">Referanslar</a></li>
                     <li class="menu-item"><a href="contact.html">Contact</a></li>
                 </ul><!-- /.navbar-nav -->
 
@@ -54,6 +61,7 @@
                     <a href="#"><i class="fa fa-youtube"></i></a>
                 </div><!-- /.menu-social -->
             </nav><!-- /.sidebar-menu -->
-        </div><!-- /.container -->
+            </div><!-- /.container -->
     </div><!-- /.header-top -->
 </header>
+{% endif %}

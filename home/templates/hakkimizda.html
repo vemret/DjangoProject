@@ -1,0 +1,44 @@
+{%  extends "homebase.html" %}
+
+{% block title %} Hakkımızda {{ setting.bloggername}} {% endblock %}
+{% block keywords %} {{ setting.keywords}} {% endblock %}
+{% block description %} {{ setting.description}} {% endblock %}
+
+{% block head %}
+<link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <section class="main-content">
+            <div class="padding">
+                <div class="container">
+                    <div class="about-me">
+                        <div class="avatar text-center"><img src="images/a.jpg" alt="Avatar" class="img-circle"></div><!-- /.avatar -->
+
+                        <div class="details">
+                            <div class="details-top text-center">
+                                <h2 class="section-title">About me</h2><!-- /.section-title -->
+                            </div><!-- /.details-top -->
+
+                            {{ setting.about|safe }}
+
+                        </div><!-- /.details -->
+
+                        <div class="social text-center">
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div><!-- /.about-me -->
+                </div><!-- /.container -->
+            </div><!-- /.padding -->
+        </section><!-- /.main-content -->
+
+{% endblock %}
