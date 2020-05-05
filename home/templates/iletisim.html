@@ -1,6 +1,6 @@
 {%  extends "homebase.html" %}
 
-{% block title %} İletişim {{ setting.bloggername}} {% endblock %}
+{% block title %} İletişim {{ setting.company}} {% endblock %}
 {% block keywords %} {{ setting.keywords}} {% endblock %}
 {% block description %} {{ setting.description}} {% endblock %}
 
@@ -14,31 +14,44 @@
 
 {% block content %}
 
-    <section class="main-content">
+     <section class="main-content">
             <div class="padding">
                 <div class="container">
-                    <div class="about-me">
-                        <div class="avatar text-center"><img src="images/a.jpg" alt="Avatar" class="img-circle"></div><!-- /.avatar -->
+                    <div class="contact">
+                        <div class="contact-top">
+                            <div class="padding">
+                                <img src="http://demos-jeweltheme.ipunu91y.maxcdn-edge.com/sasha/images/c.jpg" alt="Image">
+                            </div><!-- /.padding -->
+                        </div><!-- /.contact-top -->
 
-                        <div class="details">
+                        <div class="contact-details">
                             <div class="details-top text-center">
                                 <h2 class="section-title">About me</h2><!-- /.section-title -->
                             </div><!-- /.details-top -->
+                            <div class="col-md-6">
+                            <p>{{ setting.contact|safe }}</p>
+                            </div>
+                        <div class="col-md-6">
+                            <h2 class="section-title">About me</h2><!-- /.section-title -->
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }}" role="alert">
+                                    {{ message }}
+                                    </div>
+                                {% endfor %}
+                        {% endif %}
 
-                            {{ setting.contact|safe }}
-
-                        </div><!-- /.details -->
-
-                        <div class="social text-center">
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <form action="" method="post" class="wpcf7-form">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <span class="wpcf7-form-control-wrap submit">
+                                <input type="submit" value="SEND FORM" class="wpcf7-form-control">
+                                </span>
+                            </form>
                         </div>
-                    </div><!-- /.about-me -->
+                        </div><!-- /.contact-details -->
+                    </div><!-- /.contact -->
                 </div><!-- /.container -->
             </div><!-- /.padding -->
-        </section><!-- /.main-content -->
-
+     </section><!-- /.main-content -->
 {% endblock %}

@@ -1,6 +1,6 @@
 {%  extends "homebase.html" %}
 
-{% block title %} Referanslarımız {{ setting.bloggername}} {% endblock %}
+{% block title %} Referanslarımız {{ setting.company}} {% endblock %}
 {% block keywords %} {{ setting.keywords}} {% endblock %}
 {% block description %} {{ setting.description}} {% endblock %}
 
@@ -25,7 +25,7 @@
                                 <h2 class="section-title">About me</h2><!-- /.section-title -->
                             </div><!-- /.details-top -->
 
-                            {{ setting.about|safe }}
+                            {{ setting.references|safe }}
 
                         </div><!-- /.details -->
 
