@@ -1,67 +1,42 @@
 {% load static %}
 {% if page %}
-<header class="masthead">
-
-    <div class="header-top show">
-        <div class="container">
-
-
-
-            <div class="side-menu-trigger"><span class="trigger-icon"><i class="icon_menu" ></i>Category</span></div><!-- /.side-menu-trigger -->
-            <a class="navbar-brand hidden-xs" href="./"><img src="{% static 'images/logo.png'%}" alt="Site Logo"></a>
-            <div class="menu-search">
-                <div class="form-trigger"><i class="icon_search"></i></div>
-                <form action="#">
-                    <input type="text" name="search" id="menu-search" placeholder="Search here..">
-                </form>
-            </div>
-
-
-
-            <nav class="sidebar-menu">
-                <a class="navbar-brand" href="./"><img src="{% static 'images/logo2.png'%}" alt="Site Logo"></a>
-                <span class="menu-close"><i class="icon_close"></i></span>
-
-                <ul class="nav navbar-nav">
-                    <li class="menu-item menu-item-has-children active">
-                        <a href="#">Home</a>
-                        <ul class="sub-menu children">
-                            <li><a href="index-01.html">Home 01</a></li>
-                            <li><a href="index-02.html">Home 02</a></li>
-                            <li><a href="index-03.html">Home 03</a></li>
-                            <li><a href="index-04.html">Home 04</a></li>
-                            <li><a href="index-05.html">Home 05</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item menu-item-has-children">
-                        <a href="#">Features</a>
-                        <ul class="sub-menu children">
-                            <li><a href="standard.html">Post Standard</a></li>
-                            <li><a href="sidebar.html">Post Left Sidebar</a></li>
-                            <li><a href="image.html">Post Header Image</a></li>
-                            <li><a href="side-image.html">Post Side Image</a></li>
-                            <li><a href="gallery.html">Post Gallery</a></li>
-                            <li><a href="video.html">Post Video</a></li>
-                            <li><a href="audio.html">Post Audio</a></li>
-                            <li><a href="quote.html">Post Quote</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item"><a href="categories.html">Categories</a></li>
-                    <li class="menu-item"><a href="about.html">About</a></li>
-                    <li class="menu-item"><a href="about.html">Referanslar</a></li>
-                    <li class="menu-item"><a href="contact.html">Contact</a></li>
-                </ul><!-- /.navbar-nav -->
-
-                <div class="menu-social">
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-youtube"></i></a>
-                </div><!-- /.menu-social -->
-            </nav><!-- /.sidebar-menu -->
-            </div><!-- /.container -->
-    </div><!-- /.header-top -->
-</header>
+    <div class="col-sm-3">
+        <aside class="sidebar text-center">
+            <div class="widget widget_recent_posts"><br><br><br><br><br><br>
+                <h3 class="widget-title">Category</h3><!-- /.widget-title -->
+                <div class="widget-details">
+                    <article class="post type-post media">
+                        <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a1.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
+                        <div class="entry-content media-body">
+                            <h3 class="entry-title"><a href="standard.html">Good morning World</a></h3><!-- /.entry-title -->
+                            <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
+                        </div><!-- /.entry-content -->
+                    </article><!-- /.post -->
+                    <article class="post type-post media">
+                        <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a2.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
+                        <div class="entry-content media-body">
+                            <h3 class="entry-title"><a href="standard.html">Hitchhog is dangerous?</a></h3><!-- /.entry-title -->
+                            <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
+                        </div><!-- /.entry-content -->
+                    </article><!-- /.post -->
+                    <article class="post type-post media">
+                        <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a3.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
+                        <div class="entry-content media-body">
+                            <h3 class="entry-title"><a href="standard.html">Dream on Zanzibar</a></h3><!-- /.entry-title -->
+                            <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
+                        </div><!-- /.entry-content -->
+                    </article><!-- /.post -->
+                    <article class="post type-post media">
+                        <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a4.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
+                        <div class="entry-content media-body">
+                            <h3 class="entry-title"><a href="standard.html">Happy Road Trip</a></h3><!-- /.entry-title -->
+                            <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
+                        </div><!-- /.entry-content -->
+                    </article><!-- /.post -->
+                </div><!-- /.widget-details -->
+            </div><!-- /.widget -->
+        </aside>
+    </div>
 {% endif %}
+
+

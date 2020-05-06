@@ -1,5 +1,5 @@
 {% load static %}
-<header class="masthead">
+<header class="masthead style-02">
     <div class="header-bottom">
         <div class="container">
             <nav class="navbar navbar-default">
@@ -7,11 +7,11 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand visible-xs" href="./"><img src="{% static 'images/logo3.png'%}" alt="Site Logo'%}"></a>
+                    <a class="navbar-brand visible-xs" href="./"><img src="{% static 'images/logo3.png'%}" alt="Site Logo"></a>
                 </div>
 
                 <div id="main-menu" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav pull-left">
                         <li class="menu-item menu-item-has-children active">
                             <a href="/home">Ana Sayfa</a>
                         </li>
@@ -34,6 +34,13 @@
                         <li class="menu-item"><a href="/referanslar">Referanslar</a></li>
                         <li class="menu-item"><a href="/iletisim">İletişim</a></li>
                     </ul><!-- /.navbar-nav -->
+
+                    <div class="menu-search pull-right">
+                        <div class="form-trigger"><i class="icon_search"></i></div>
+                        <form action="#">
+                            <input type="text" name="search" id="menu-search" placeholder="Search here..">
+                        </form>
+                    </div>
                 </div><!-- /.navbar-collapse -->
             </nav>
         </div><!-- /.container -->
