@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="821753a6-67a5-4762-bff8-b0eb7b53e9c2" name="Default Changelist" comment="html degisiklikleri">
+    <list default="true" id="821753a6-67a5-4762-bff8-b0eb7b53e9c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/hakkimizda.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/hakkimizda.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/homebase.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/homebase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/iletisim.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/iletisim.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/referanslar.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/referanslar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/sidebar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/slider.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/slider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +103,8 @@
       <workItem from="1588683211984" duration="12466000" />
       <workItem from="1588707245868" duration="3390000" />
       <workItem from="1588764960202" duration="639000" />
-      <workItem from="1588775213839" duration="2946000" />
+      <workItem from="1588775213839" duration="3267000" />
+      <workItem from="1588954247408" duration="2712000" />
     </task>
     <task id="LOCAL-00001" summary="viev degisiklik">
       <created>1585687993216</created>
@@ -163,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588707356261</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="html degisiklikleri">
+      <created>1588778330369</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1588778330369</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,17 +185,18 @@
     <MESSAGE value="video12" />
     <MESSAGE value="video 13" />
     <MESSAGE value="vide 14" />
-    <option name="LAST_COMMIT_MESSAGE" value="vide 14" />
+    <MESSAGE value="html degisiklikleri" />
+    <option name="LAST_COMMIT_MESSAGE" value="html degisiklikleri" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586216362693">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1586216362693" />
-    <state x="496" y="0" key="CommitChangelistDialog2" timestamp="1588728390122">
+    <state x="496" y="0" key="CommitChangelistDialog2" timestamp="1588778329221">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="496" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588728390122" />
+    <state x="496" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588778329221" />
     <state x="250" y="58" key="DiffContextDialog" timestamp="1586476088344">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -214,14 +221,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585693107314" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1588707373498">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1588778338501">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588707373498" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588775235059">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588778338501" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588954248349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588775235059" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588954248349" />
     <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586216279979">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
