@@ -1,42 +1,108 @@
 {% load static %}
 {% if page %}
-    <div class="col-sm-3">
-        <aside class="sidebar text-center">
-            <div class="widget widget_recent_posts"><br><br><br><br><br><br>
-                <h3 class="widget-title">Category</h3><!-- /.widget-title -->
-                <div class="widget-details">
-                    <article class="post type-post media">
-                        <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a1.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
-                        <div class="entry-content media-body">
-                            <h3 class="entry-title"><a href="standard.html">Good morning World</a></h3><!-- /.entry-title -->
-                            <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
-                        </div><!-- /.entry-content -->
-                    </article><!-- /.post -->
-                    <article class="post type-post media">
-                        <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a2.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
-                        <div class="entry-content media-body">
-                            <h3 class="entry-title"><a href="standard.html">Hitchhog is dangerous?</a></h3><!-- /.entry-title -->
-                            <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
-                        </div><!-- /.entry-content -->
-                    </article><!-- /.post -->
-                    <article class="post type-post media">
-                        <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a3.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
-                        <div class="entry-content media-body">
-                            <h3 class="entry-title"><a href="standard.html">Dream on Zanzibar</a></h3><!-- /.entry-title -->
-                            <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
-                        </div><!-- /.entry-content -->
-                    </article><!-- /.post -->
-                    <article class="post type-post media">
-                        <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a4.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
-                        <div class="entry-content media-body">
-                            <h3 class="entry-title"><a href="standard.html">Happy Road Trip</a></h3><!-- /.entry-title -->
-                            <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
-                        </div><!-- /.entry-content -->
-                    </article><!-- /.post -->
-                </div><!-- /.widget-details -->
-            </div><!-- /.widget -->
-        </aside>
-    </div>
+
+
+
+
+
+
+ <div class="col-sm-2">
+
+ <!--<div class="sidenav">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+  <button class="dropdown-btn">Dropdown
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+  <a href="#contact">Search</a>
+</div> -->
+<div class="container">
+
+<div class="sidenav">
+
+        {% load mptt_tags %}
+
+    {% recursetree category %}<div>
+        <button class="dropdown-btn">{% if node.is_leaf_node %}<a href="/category/{{ node.slug }}">{% endif %}
+            {{ node.title }}</a>{% if not node.is_leaf_node %}<i class="fa fa-caret-down"></i>{% endif %}
+        </button>
+    <div class="dropdown-container">
+            {% if not node.is_leaf_node %}
+
+                   {{ children }}
+
+            {% endif %}
+        </div>
+        </div>
+    {% endrecursetree %}
+
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+  <button class="dropdown-btn">Dropdown
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+  <a href="#contact">Search</a>
+</div>
+
+
+</div>
+
+
+
+
+
+<!--<header class="masthead">
+            <div class="header-top">
+   <div class="container">
+       <nav class="navbar navbar-default">
+  <div class="sidenav">
+
+      <ul class="nav navbar-nav">
+    <li class="menu-item menu-item-has-children">
+        <a href="#">About</a>
+                                <ul class="sub-menu children">
+                                    <li><a href="index-01.html">Home 01</a></li>
+                                    <li><a href="index-02.html">Home 02</a></li>
+                                    <li><a href="index-03.html">Home 03</a></li>
+                                    <li><a href="index-04.html">Home 04</a></li>
+                                    <li><a href="index-05.html">Home 05</a></li>
+                                </ul>
+    </li>
+          <li class="menu-item menu-item-has-children active">
+        <a href="#">About</a>
+                                <ul class="sub-menu children">
+                                    <li><a href="index-01.html">Home 01</a></li>
+                                    <li><a href="index-02.html">Home 02</a></li>
+                                    <li><a href="index-03.html">Home 03</a></li>
+                                    <li><a href="index-04.html">Home 04</a></li>
+                                    <li><a href="index-05.html">Home 05</a></li>
+                                </ul>
+    </li>
+    <li><a class="menu-item" href="#services">Services</a></li>
+    <li><a class="menu-item" href="#clients">Clients</a></li>
+    <li><a class="menu-item" href="#contact">Contact</a></li>
+      </ul>
+
+  </div>
+           </nav>
+      </div>
+      </div>
+</header> -->
+ </div>
 {% endif %}
 
 
