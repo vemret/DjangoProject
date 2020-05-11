@@ -10,9 +10,23 @@ from home.models import Setting, ContactFormMessage, ContactFormm
 def index(request):
     setting = Setting.objects.get(pk=1)
     sliderdata = Blog.objects.all()[:4]
-    category=Category.objects.all()
-    context = {'setting': setting, 'category': category, 'page': 'home', 'sliderdata': sliderdata}
+    category = Category.objects.all()
+    homeblogs = Blog.objects.all()[:4]
+    lastblogs = Blog.objects.all().order_by('-id')[:4]
+    randomblogs = Blog.objects.all().order_by('?')[:4]
+
+    context = {'setting': setting,
+               'category': category,
+               'page': 'home',
+               'sliderdata': sliderdata,
+               'homeblogs': homeblogs,
+               'lastblogs': lastblogs,
+               'randomblogs': randomblogs
+               }
     return render(request, 'index.html', context)
+
+
+
 
 def hakkimizda(request):
     setting = Setting.objects.get(pk=1)
@@ -23,6 +37,7 @@ def referanslar(request):
     setting = Setting.objects.get(pk=1)
     context = {'setting': setting, }
     return render(request, 'referanslar.html', context)
+
 
 def iletisim(request):
 
@@ -43,3 +58,14 @@ def iletisim(request):
     form = ContactFormm()
     context = {'setting': setting, 'form': form}
     return render(request, 'iletisim.html', context)
+
+
+def category_blogs(request,id,slug):
+    category = Category.objects.all()
+    categorydata = Category.objects.get(pk=id)
+    blogs = Blog.objects.filter(category_id=id)
+    context = {'blogs': blogs,
+               'category': category,
+               'categorydata': categorydata
+               }
+    return render(request, 'blogs.html', context)

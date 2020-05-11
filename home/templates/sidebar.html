@@ -30,7 +30,7 @@
         {% load mptt_tags %}
 
     {% recursetree category %}<div>
-        <button class="dropdown-btn">{% if node.is_leaf_node %}<a href="/category/{{ node.slug }}">{% endif %}
+        <button class="dropdown-btn">{% if node.is_leaf_node %}<a href="/category/{{ node.id }}/{{ node.slug }}">{% endif %}
             {{ node.title }}</a>{% if not node.is_leaf_node %}<i class="fa fa-caret-down"></i>{% endif %}
         </button>
     <div class="dropdown-container">

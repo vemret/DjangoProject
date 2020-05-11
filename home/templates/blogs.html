@@ -1,0 +1,47 @@
+{%  extends "homebase.html" %}
+{% load static %}
+{% block title %} {{ categorydata.title}} Blogs {% endblock %}
+{% block keywords %} {{ categorydata.keywords}} {% endblock %}
+{% block description %} {{ categorydata.description}} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <section class="main-content">
+        <div class="padding">
+            <div class="container">
+                <div class="row">
+                    <div class="categories text-center">
+                        <div class="details-top">
+                            <h2 class="section-title">{{ categorydata.title }}</h2><!-- /.section-title -->
+                        </div><!-- /.details-top -->
+                        {% for rs in blogs %}
+                        <div class="col-sm-4">
+                            <article class="post type-post">
+                                <div class="entry-thumbnail"><img src="{{ rs.image.url }}" alt="Thumbnail Image"></div><!-- /.entry-thumbnail -->
+                                <div class="entry-content">
+                                    <span class="category"><a href="#">{{ categorydata.title }}</a></span><!-- /.category -->
+                                    <h2 class="entry-title"><a href="/blogs/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h2><!-- /.entry-title -->
+                                    <p>
+                                        {{ rs.description }}
+                                    </p>
+
+                                    <a href="/blogs/{{ rs.id }}/{{ rs.slug }}" class="btn">Read more</a><!-- /.btn -->
+                                </div><!-- /.entry-content -->
+                            </article><!-- /.post -->
+                        </div>
+                        {% endfor %}
+                    </div><!-- /.categories -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.padding -->
+    </section><!-- /.main-content -->
+
+{% endblock %}
