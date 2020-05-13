@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-from blog.models import Blog, Category
+from blog.models import Blog, Category, Images
 from home.models import Setting, ContactFormMessage, ContactFormm
 
 
@@ -69,3 +69,14 @@ def category_blogs(request,id,slug):
                'categorydata': categorydata
                }
     return render(request, 'blogs.html', context)
+
+
+def blog_detail(request,id,slug):
+    category = Category.objects.all()  #suan kullanılmıyo sidebar cagırıcaksam
+    blog = Blog.objects.get(pk=id)
+    images = Images.objects.filter(blog_id=id)
+    context = {'blog': blog,
+               'category': category,
+               'images': images
+               }
+    return render(request, 'blog_detail.html', context)
