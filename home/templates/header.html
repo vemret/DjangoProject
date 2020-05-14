@@ -37,8 +37,9 @@
 
                     <div class="menu-search pull-right">
                         <div class="form-trigger"><i class="icon_search"></i></div>
-                        <form action="#">
-                            <input type="text" name="search" id="menu-search" placeholder="Search here..">
+                        <form action="/search/" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="query" placeholder="Search here..">
                         </form>
                     </div>
                 </div><!-- /.navbar-collapse -->

@@ -3,7 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-from blog.models import Blog, Category, Images
+from blog.models import Blog, Category, Images, Comment
+from home.forms import SearchForm
 from home.models import Setting, ContactFormMessage, ContactFormm
 
 
@@ -71,12 +72,28 @@ def category_blogs(request,id,slug):
     return render(request, 'blogs.html', context)
 
 
-def blog_detail(request,id,slug):
+def blog_detail(request, id, slug):
     category = Category.objects.all()  #suan kullanılmıyo sidebar cagırıcaksam
     blog = Blog.objects.get(pk=id)
     images = Images.objects.filter(blog_id=id)
+    comments = Comment.objects.filter(blog_id=id, status='True')
     context = {'blog': blog,
                'category': category,
-               'images': images
+               'images': images,
+               'comments': comments,
                }
     return render(request, 'blog_detail.html', context)
+
+def blog_search(request):
+    if request.method == 'POST':  # form post edildiyse
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            category = Category.objects.all()  # access user session info.
+            query = form.cleaned_data['query'] # formdan bilgiyi al
+            blogs = Blog.objects.filter(title__icontains=query)
+            context = {'blogs': blogs,
+                       'category': category,
+                       }
+            return render(request, 'blogs_search.html', context)
+
+        return HttpResponseRedirect('/')

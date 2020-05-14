@@ -4,7 +4,8 @@ from django.contrib import admin
 from django.utils.html import format_html
 from mptt.admin import MPTTModelAdmin, DraggableMPTTAdmin
 
-from blog.models import Category, Blog, Images
+from blog.models import Category, Blog, Images, Comment
+
 
 class BlogImageInline(admin.TabularInline):
     model = Images
@@ -62,6 +63,11 @@ class CategoryAdmin(DraggableMPTTAdmin):
 
     related_products_cumulative_count.short_description = 'Related products (in tree)'
 
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['subject', 'comment', 'blog', 'user', 'status']
+    list_filter = ['status']
+
 """ class MyDraggableMPTTAdmin(DraggableMPTTAdmin):
     list_display = ('tree_actions', 'something')
     list_display_links = ('something',)
@@ -73,8 +79,9 @@ class CategoryAdmin(DraggableMPTTAdmin):
             instance.title,  # Or whatever you want to put here
         )
     something.short_description = ('something nice')
-
+      
 admin.site.register(Category,MyDraggableMPTTAdmin)  """
-admin.site.register(Category,CategoryAdmin)
-admin.site.register(Blog,BlogAdmin)
-admin.site.register(Images,ImagesAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Blog, BlogAdmin)
+admin.site.register(Images, ImagesAdmin)
+admin.site.register(Comment, CommentAdmin)

@@ -1,4 +1,5 @@
 {%  extends "homebase.html" %}
+{% load static %}
 
 {% block title %} İletişim {{ setting.company}} {% endblock %}
 {% block keywords %} {{ setting.keywords}} {% endblock %}
@@ -20,7 +21,7 @@
                     <div class="contact">
                         <div class="contact-top">
                             <div class="padding">
-                                <img src="http://demos-jeweltheme.ipunu91y.maxcdn-edge.com/sasha/images/c.jpg" alt="Image">
+                                <img src="{% static 'images/c.jpg'%}" alt="Image">
                             </div><!-- /.padding -->
                         </div><!-- /.contact-top -->
 
