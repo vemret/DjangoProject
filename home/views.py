@@ -1,10 +1,13 @@
+import json
+
 from django.contrib import messages
+from django.contrib.auth import logout, login, authenticate
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
 from blog.models import Blog, Category, Images, Comment
-from home.forms import SearchForm
+from home.forms import SearchForm, SignUpForm
 from home.models import Setting, ContactFormMessage, ContactFormm
 
 
@@ -89,11 +92,81 @@ def blog_search(request):
         form = SearchForm(request.POST)
         if form.is_valid():
             category = Category.objects.all()  # access user session info.
+
+
             query = form.cleaned_data['query'] # formdan bilgiyi al
-            blogs = Blog.objects.filter(title__icontains=query)
+            catid = form.cleaned_data['query']  # formdan bilgiyi al
+
+            if catid == 0:
+                blogs = Blog.objects.filter(title__icontains=query)
+            else:
+                blogs = Blog.objects.filter(title__icontains=query)
+
             context = {'blogs': blogs,
                        'category': category,
                        }
             return render(request, 'blogs_search.html', context)
 
         return HttpResponseRedirect('/')
+
+def blog_search_auto(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        places = Blog.objects.filter(city__icontains=q)
+        results = []
+        for pl in places:
+            place_json = {}
+            place_json = pl.city + "," + pl.state
+            results.append(place_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Redirect to a success page.
+            return HttpResponseRedirect('/')
+        else:
+            # Return an 'invalid login' error message.
+            messages.error(request, "Opss! Giriş hatalı kullanıcı adınızı ve ya şifrenizi kontrol edin! :(")
+            return HttpResponseRedirect('/login')
+
+
+    category = Category.objects.all()
+    context = {
+        'category': category,
+    }
+    return render(request, 'login.html', context)
+
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return HttpResponseRedirect("/")
+
+
+    form = SignUpForm()
+    category = Category.objects.all()
+    context = {
+        'category': category,
+        'form': form,
+    }
+    return render(request, 'signup.html', context)

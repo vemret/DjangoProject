@@ -1,0 +1,59 @@
+{%  extends "homebase.html" %}
+{% load static %}
+
+{% block title %} Login {{ setting.company}} {% endblock %}
+{% block keywords %} {{ setting.keywords}} {% endblock %}
+{% block description %} {{ setting.description}} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <section class="main-content">
+        <div class="padding">
+            <div class="container">
+                <div class="contact">
+
+
+                    <div class="contact-details">
+                        <div class="details-top text-center">
+                            <h1 class="section-title">LOGIN</h1><!-- /.section-title -->
+                        </div><!-- /.details-top -->
+                    <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                        <div class="col-md-4">
+                            <h4 class="widget-title"></h4><!-- /.section-title -->
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+                            <form action="" method="post" class="wpcf7-form">
+                                {% csrf_token %}
+                                    <input type="text" name="username" class="wpcf7-form-control" placeholder="User Name" required>
+
+                                    <input type="password" name="password" class="wpcf7-form-control" placeholder="Password" required>
+                                <span class="wpcf7-form-control-wrap submit">
+                                <input type="submit" value="login" class="wpcf7-form-control">
+                                </span>
+                            </form>
+                        </div>
+                    <div class="col-md-4">
+                    </div>
+                    </div>
+                    </div><!-- /.contact-details -->
+                </div><!-- /.contact -->
+            </div><!-- /.container -->
+        </div><!-- /.padding -->
+    </section><!-- /.main-content -->
+{% endblock %}

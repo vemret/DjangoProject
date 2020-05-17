@@ -29,19 +29,54 @@
                                 <li><a href="quote.html">Post Quote</a></li>
                             </ul>
                         </li>
-                        <li class="menu-item"><a href="categories.html">Categories</a></li>
                         <li class="menu-item"><a href="/hakkimizda">Hakkımızda</a></li>
                         <li class="menu-item"><a href="/referanslar">Referanslar</a></li>
                         <li class="menu-item"><a href="/iletisim">İletişim</a></li>
-                    </ul><!-- /.navbar-nav -->
+                        {% if user.id is not None %}
+                            <li class="menu-item menu-item-has-children"><a href="/#"><i class="fa fa-angle-double-down"></i>{{ user.first_name }}</a>
+                            <ul class="sub-menu children">
+                                <li><a href="/#">Hesabım</a></li>
+                                <li><a href="/logout">Çıkış</a></li>
 
-                    <div class="menu-search pull-right">
+                            </ul>
+                                </li>
+                        {% else %}
+                            <li class="menu-item menu-item-has-children"><a href="/login"><i class="fa fa-user-o"></i>Giriş</a></li>
+                            <li class="menu-item menu-item-has-children"><a href="/signup">Kayıt Ol</a></li>
+                        {% endif %}
+                    </ul><!-- /.navbar-nav -->
+                    <script>
+
+  $(function() {
+    $("#query").autocomplete({
+      source: "/search_auto/",
+      select: function (event, ui) { //item selected
+        AutoCompleteSelectHandler(event, ui)
+      },
+      minLength: 2,
+    });
+  });
+
+  function AutoCompleteSelectHandler(event, ui)
+  {
+    var selectedObj = ui.item;
+  }
+
+</script>
+
+                    <div style="width: 250px;" class="menu-search pull-right">
+
                         <div class="form-trigger"><i class="icon_search"></i></div>
+
                         <form action="/search/" method="post">
                             {% csrf_token %}
-                            <input type="text" name="query" placeholder="Search here..">
+                            <input id="query" type="text" name="query" placeholder="Search here..">
+
+
                         </form>
+
                     </div>
+
                 </div><!-- /.navbar-collapse -->
             </nav>
         </div><!-- /.container -->

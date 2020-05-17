@@ -1,0 +1,65 @@
+{%  extends "homebase.html" %}
+{% load static %}
+
+{% block title %} Kayıt Ol {{ setting.company}} {% endblock %}
+{% block keywords %} {{ setting.keywords}} {% endblock %}
+{% block description %} {{ setting.description}} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <section class="main-content">
+        <div class="padding">
+            <div class="container">
+                <div class="contact">
+
+
+                    <div class="contact-details">
+                        <div class="details-top text-center">
+                            <h1 class="section-title">KAYIT OL</h1><!-- /.section-title -->
+                        </div><!-- /.details-top -->
+                        <div class="row">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        <div class="alert alert-{{ message.tags }}" role="alert">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                                <form action="" method="post" class="wpcf7-form">
+                                    {% csrf_token %}
+                                    {% for field in form %}
+                                        <p>
+                                            {{ field.label_tag }}<br>
+                                            {{ field }}
+                                            {% if field.help_text %}
+                                                <small style="color: gray">{{ field.help_text }}</small>
+                                            {% endif %}
+                                            {% for error in field.errors %}
+                                                <p style="color: red">{{ error }}</p>
+                                            {% endfor %}
+                                        </p>
+                                    {% endfor %}
+                                    <button type="submit">Sign Up</button>
+                                </form>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                    </div><!-- /.contact-details -->
+                </div><!-- /.contact -->
+            </div><!-- /.container -->
+        </div><!-- /.padding -->
+    </section><!-- /.main-content -->
+{% endblock %}
