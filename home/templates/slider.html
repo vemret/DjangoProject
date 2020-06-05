@@ -2,6 +2,13 @@
 
 
 <div class="col-sm-10">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
     <div class="banner-slider">
         <div class="container">
             <div class="banner-slider-04 carousel slide">

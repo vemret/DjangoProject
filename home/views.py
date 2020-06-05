@@ -8,7 +8,7 @@ from django.shortcuts import render
 # Create your views here.
 from blog.models import Blog, Category, Images, Comment
 from home.forms import SearchForm, SignUpForm
-from home.models import Setting, ContactFormMessage, ContactFormm
+from home.models import Setting, ContactFormMessage, ContactFormm, UserProfile
 
 
 def index(request):
@@ -33,13 +33,19 @@ def index(request):
 
 
 def hakkimizda(request):
+    category = Category.objects.all()
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting, }
+    context = {'setting': setting,
+               'category': category,
+               }
     return render(request, 'hakkimizda.html', context)
 
 def referanslar(request):
+    category = Category.objects.all()
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting, }
+    context = {'setting': setting,
+               'category': category,
+               }
     return render(request, 'referanslar.html', context)
 
 
@@ -58,9 +64,13 @@ def iletisim(request):
             messages.success(request, "Mesajınız başarı ile gönderildi")
             return HttpResponseRedirect('/iletisim')
 
+    category = Category.objects.all()
     setting = Setting.objects.get(pk=1)
     form = ContactFormm()
-    context = {'setting': setting, 'form': form}
+    context = {'setting': setting,
+               'form': form,
+               'category': category,
+               }
     return render(request, 'iletisim.html', context)
 
 
@@ -95,28 +105,28 @@ def blog_search(request):
 
 
             query = form.cleaned_data['query'] # formdan bilgiyi al
-            catid = form.cleaned_data['query']  # formdan bilgiyi al
+            catid = form.cleaned_data['catid']  # formdan bilgiyi al
 
             if catid == 0:
                 blogs = Blog.objects.filter(title__icontains=query)
             else:
-                blogs = Blog.objects.filter(title__icontains=query)
+                blogs = Blog.objects.filter(title__icontains=query,category_id=catid)
 
             context = {'blogs': blogs,
                        'category': category,
                        }
             return render(request, 'blogs_search.html', context)
 
-        return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/')
 
 def blog_search_auto(request):
     if request.is_ajax():
         q = request.GET.get('term', '')
-        places = Blog.objects.filter(city__icontains=q)
+        places = Blog.objects.filter(title__icontains=q)
         results = []
         for pl in places:
             place_json = {}
-            place_json = pl.city + "," + pl.state
+            place_json = pl.title
             results.append(place_json)
         data = json.dumps(results)
     else:
@@ -160,13 +170,12 @@ def signup_view(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            '''            current_user = request.user
+            current_user = request.user
             data = UserProfile()
             data.user_id = current_user.id
             data.image = "images/users/user.png"
             data.save()
             messages.success(request, "Hoş Geldiniz.. Sitemize başarılı bir şekilde üye oldunuz :)")
-            return HttpResponseRedirect("/")'''
             return HttpResponseRedirect("/")
 
 

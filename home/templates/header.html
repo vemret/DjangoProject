@@ -64,7 +64,7 @@
 
                     </script>
 
-                    <div style="width: 250px;" class="menu-search pull-right">
+                    <div style="width: 385px;" class="menu-search pull-right">
 
                         <div class="form-trigger"><i class="icon_search"></i></div>
 
@@ -72,6 +72,20 @@
                             {% csrf_token %}
                             <input id="query" type="text" name="query" placeholder="Search here..">
 
+                        {% load mptt_tags %}
+                            <select name="catid">
+                                <option value="0">Tüm Kategoriler</option>
+                                {% recursetree category %}
+                                    {% if node.is_leaf_node %}
+                                        <option value="{{node.id}}">{{node.title}}</option>
+                                    {% endif %}
+                                    {% if not node.is_leaf_node %}
+                                        <optgroup label="{{ node.title }}">
+                                            {{ children }}
+                                        </optgroup>
+                            {% endif %}
+                            {% endrecursetree %}
+                            </select>
 
                         </form>
 

@@ -1,7 +1,7 @@
 {%  extends "homebase.html" %}
 {% load static %}
 
-{% block title %} Profil {{ setting.company}} {% endblock %}
+{% block title %} İletişim {{ setting.company}} {% endblock %}
 {% block keywords %} {{ setting.keywords}} {% endblock %}
 {% block description %} {{ setting.description}} {% endblock %}
 
@@ -40,54 +40,20 @@
                                     </div><!-- /.top-content -->
                                     <div class="widget widget_about_author">
                                         <div class="widget-details">
-                                            <div class="author-avatar"><img src="{{ profile.image.url }}" alt="Avatar" class="img-circle"></div><!-- /.author-avatar -->
-
-                                            <div class="btn-container">
-                                                <a href="/user/update" class="btn">Profili Güncelle</a><!-- /.btn -->
-                                                <a href="/user/password" class="btn">Şifreyi Güncelle</a><!-- /.btn -->
-                                            </div>
-                                        <br><br>
-                                            {% if messages %}
-                                                {% for message in messages %}
-                                                    <div class="alert alert-{{ message.tags }}" role="alert">
-                                                        {{ message }}
-                                                    </div>
-                                                {% endfor %}
-                                            {% endif %}
+                                            <div class="author-avatar"><img src="{{ user.userprofile.image.url }}" alt="Avatar" class="img-circle"></div><!-- /.author-avatar -->
                                         </div><!-- /.widget-details -->
-                                    <br>
                                     </div><!-- /.widget -->
                                     <div class="entry-content">
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <td>{{profile.user_name}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Email</th>
-                                                <td>{{ profile.user.email }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Phone</th>
-                                                <td>{{profile.phone}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <td>{{profile.address}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>City</th>
-                                                <td>{{profile.city}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Country</th>
-                                                <td>{{profile.country}}</td>
-                                            </tr>
-                                            <tr><th></th><td></td></tr>
-                                            </thead>
-                                        </table>
-
+                                        <form method="POST" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <fieldset class="form-group">
+                                                {{ user_form.as_p }}
+                                                {{ profile_form.as_p }}
+                                            </fieldset>
+                                            <div class="form-group">
+                                                <button class="btn" type="submit">Update</button>
+                                            </div>
+                                        </form>
                                         <div class="post-meta">
                                             <span class="post-social pull-right">
                                                     <a href="#"><i class="fa fa-instagram"></i></a>
