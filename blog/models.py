@@ -1,8 +1,9 @@
+from ckeditor.widgets import CKEditorWidget
 from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput, Select, FileInput
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -77,7 +78,7 @@ class Blog(models.Model):
 
 
 class Images(models.Model):
-    blog=models.ForeignKey(Blog,on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
     title = models.CharField(max_length=150,blank=True)
     image = models.ImageField(blank=True, upload_to='images/')
 
@@ -112,4 +113,22 @@ class CommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ['subject', 'comment']
+
+
+"""
+class BlogForm(ModelForm):
+    class Meta:
+        model = Blog
+        fields = ['category', 'title', 'slug', 'keywords', 'description', 'image', 'detail']
+        widgets = {
+            'title': TextInput(attrs={'class': 'input', 'placeholder': 'title'}),
+            'slug': TextInput(attrs={'class': 'input', 'placeholder': 'slug'}),
+            'keywords': TextInput(attrs={'class': 'input', 'placeholder': 'keywords'}),
+            'description': TextInput(attrs={'class': 'input', 'placeholder': 'description'}),
+            'category': Select(attrs={'class': 'input', 'placeholder': 'category'}, choices=Category),
+            'image': FileInput(attrs={'class': 'input', 'placeholder': 'image', }),
+            'detail': CKEditorWidget(),
+
+        }
+"""
 
