@@ -69,9 +69,11 @@
                                             {% for rs in blog %}
                                                 <tr>
                                                     <td>
+                                                        <a href="/blog/{{ rs.id }}/{{ rs.slug }}">
                                                         <img src="{{ rs.image.url }}" style="height: 30px;">
+                                                        </a>
                                                     </td>
-                                                    <td>{{ rs.title }}</td>
+                                                    <td><a href="/blog/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></td>
                                                     <td>{{rs.category}}</td>
                                                     <td>{{rs.status}}</td>
                                                     <td>{{rs.create_at}}</td>

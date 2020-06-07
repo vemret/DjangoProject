@@ -31,6 +31,7 @@
                         </li>
                         <li class="menu-item"><a href="/hakkimizda">Hakkımızda</a></li>
                         <li class="menu-item"><a href="/referanslar">Referanslar</a></li>
+                        <li class="menu-item"><a href="/sss">SSS</a></li>
                         <li class="menu-item"><a href="/iletisim">İletişim</a></li>
                         {% if user.id is not None %}
                             <li class="menu-item menu-item-has-children"><a href="/#"><img src="{{ request.user.profile.image.url }}"><i class="fa fa-angle-double-down"></i>{{ user.first_name }}</a>
@@ -64,7 +65,7 @@
 
                     </script>
 
-                    <div style="width: 385px;" class="menu-search pull-right">
+                    <div style="width: 213px;" class="menu-search pull-right">
 
                         <div class="form-trigger"><i class="icon_search"></i></div>
 
@@ -72,7 +73,7 @@
                             {% csrf_token %}
                             <input id="query" type="text" name="query" placeholder="Search here..">
 
-                        {% load mptt_tags %}
+                            {% load mptt_tags %}
                             <select name="catid">
                                 <option value="0">Tüm Kategoriler</option>
                                 {% recursetree category %}
@@ -83,8 +84,8 @@
                                         <optgroup label="{{ node.title }}">
                                             {{ children }}
                                         </optgroup>
-                            {% endif %}
-                            {% endrecursetree %}
+                                    {% endif %}
+                                {% endrecursetree %}
                             </select>
 
                         </form>

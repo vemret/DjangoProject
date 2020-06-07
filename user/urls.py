@@ -11,9 +11,9 @@ urlpatterns = [
     path('deletecomment/<int:id>', views.deletecomment, name='deletecomment'),
     path('addblog/', views.addblog, name='addblog'),
     path('blog/', views.blog, name='blog'),
-    #path('blogedit/<int:id>', views.blogedit, name='blogedit'),
-    #path('blogdelete/<int:id>', views.blogdelete, name='blogdelete'),
-    #path('addcomment/<int:id>', views.addcomment, name='addcomment'),
+    path('blogedit/<int:id>', views.blogedit, name='blogedit'),
+    path('blogdelete/<int:id>', views.blogdelete, name='blogdelete'),
+
 
 
     # ex: /polls/5/

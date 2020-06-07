@@ -1,0 +1,58 @@
+{%  extends "homebase.html" %}
+
+{% block title %} Sıkça Sorulan Sorular {% endblock %}
+{% block keywords %}  {% endblock %}
+{% block description %}  {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <section class="main-content">
+        <div class="padding">
+            <div class="container">
+
+
+
+                <div class="details">
+                    <div class="details-top text-center">
+                        <h1 class="section-title">Sıkça Sorulan Sorular</h1><!-- /.section-title -->
+
+                    </div><!-- /.details-top -->
+                    <br><br>
+
+                    <table cellpadding="3" width="1200">
+
+
+                        {% for rs in faq %}
+                            <tr>
+                                <th><h4>{{ rs.question }}</h4></th>
+
+                            </tr>
+                            <tr>
+                                <td><p>{{ rs.answer }}</p><hr></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                </div><!-- /.details -->
+
+                <div class="social text-center">
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                </div>
+
+            </div><!-- /.container -->
+        </div><!-- /.padding -->
+    </section><!-- /.main-content -->
+
+{% endblock %}

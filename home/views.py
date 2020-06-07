@@ -8,7 +8,7 @@ from django.shortcuts import render
 # Create your views here.
 from blog.models import Blog, Category, Images, Comment
 from home.forms import SearchForm, SignUpForm
-from home.models import Setting, ContactFormMessage, ContactFormm, UserProfile
+from home.models import Setting, ContactFormMessage, ContactFormm, UserProfile, FAQ
 
 
 def index(request):
@@ -186,3 +186,13 @@ def signup_view(request):
         'form': form,
     }
     return render(request, 'signup.html', context)
+
+
+def faq(request):
+    category = Category.objects.all()
+    faq = FAQ.objects.filter(status=True).order_by('ordernum')
+    context = {
+        'category': category,
+        'faq': faq,
+    }
+    return render(request, 'faq.html', context)
