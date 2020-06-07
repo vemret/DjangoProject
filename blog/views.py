@@ -11,7 +11,7 @@ def index(request):
     return HttpResponse("Blog Page!")
 
 @login_required(login_url='/login') #check login
-def addcomment(request,id):
+def addcomment(request, id):
     url = request.META.get('HTTP_REFERER')  # get last url
     if request.method == 'POST': #form post edildiyse
         form = CommentForm(request.POST)

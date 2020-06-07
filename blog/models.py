@@ -55,6 +55,7 @@ class Blog(models.Model):
         ('False', 'Hayır'),
     )
     category = models.ForeignKey(Category, on_delete=models.CASCADE) #relation with Category taable
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     keywords = models.CharField(blank=True, max_length=255)
     description = models.CharField(blank=True, max_length=255)
@@ -79,7 +80,7 @@ class Blog(models.Model):
 
 class Images(models.Model):
     blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
-    title = models.CharField(max_length=150,blank=True)
+    title = models.CharField(max_length=150, blank=True)
     image = models.ImageField(blank=True, upload_to='images/')
 
     def __str__(self):
@@ -97,7 +98,7 @@ class Comment(models.Model):
         ('False', 'Hayır'),
     )
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     subject = models.CharField(max_length=50, blank=True)
     comment = models.TextField(max_length=200, blank=True)
     status = models.CharField(max_length=10, choices=STATUS, default='New')
@@ -115,7 +116,7 @@ class CommentForm(ModelForm):
         fields = ['subject', 'comment']
 
 
-"""
+
 class BlogForm(ModelForm):
     class Meta:
         model = Blog
@@ -125,10 +126,10 @@ class BlogForm(ModelForm):
             'slug': TextInput(attrs={'class': 'input', 'placeholder': 'slug'}),
             'keywords': TextInput(attrs={'class': 'input', 'placeholder': 'keywords'}),
             'description': TextInput(attrs={'class': 'input', 'placeholder': 'description'}),
-            'category': Select(attrs={'class': 'input', 'placeholder': 'category'}, choices=Category),
+            'category': Select(attrs={'class': 'input', 'placeholder': 'category'}),
             'image': FileInput(attrs={'class': 'input', 'placeholder': 'image', }),
             'detail': CKEditorWidget(),
 
         }
-"""
+
 

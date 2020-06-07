@@ -1,0 +1,73 @@
+{%  extends "homebase.html" %}
+{% load static %}
+
+{% block title %} Profil {{ setting.company}} {% endblock %}
+{% block keywords %} {{ setting.keywords}} {% endblock %}
+{% block description %} {{ setting.description}} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <section class="main-content">
+        <div class="padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <aside class="sidebar text-center">
+
+                            {% include "user_panel.html" %}
+
+                            <div class="widget widget_ad">
+                                <div class="widget-details">
+                                    <a href="#" class="ad-banner"><img src="{% static 'images/sidebar/ad.jpg'%}" alt="Ad Banner"></a>
+                                </div><!-- /.widget-details -->
+                            </div><!-- /.widget -->
+                        </aside><!-- /.sidebar -->
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="single-post">
+                            <div class="type-standard">
+                                <article class="post type-post">
+                                    <div class="top-content text-center">
+                                        <h2 class="section-title"><a href="#">Yeni Blog</a></h2><!-- /.entry-title -->
+                                    </div><!-- /.top-content -->
+                                    <div class="entry-content">
+                                        <form method="POST" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <fieldset class="form-group">
+                                                {{ form.media}}
+                                                {{ form.as_p }}
+                                            </fieldset>
+                                            <div class="form-group">
+                                                <button class="btn" type="submit">Kaydet</button>
+                                            </div>
+                                        </form>
+                                        <div class="post-meta">
+                                            <span class="post-social pull-right">
+                                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                                                </span><!-- /.post-social -->
+                                        </div><!-- /.post-meta -->
+                                    </div><!-- /.entry-content -->
+                                </article><!-- /.post -->
+                            </div><!-- /.type-standard -->
+                        </div><!-- /.single-post -->
+                    </div>
+                </div>
+            </div><!-- /.container -->
+        </div><!-- /.padding -->
+    </section><!-- /.main-content -->
+{% endblock %}

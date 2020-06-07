@@ -29,7 +29,7 @@ class ProfileUpdateForm(forms.ModelForm):
         model = UserProfile
         fields = ('phone', 'address', 'city', 'country', 'image')
         widgets = {
-            'phone' :TextInput(attrs={'class':'input','placholder':'phone'}),
+            'phone': TextInput(attrs={'class':'input','placholder':'phone'}),
             'address': TextInput(attrs={'class': 'input', 'placholder': 'address'}),
             'city': Select(attrs={'class': 'input', 'placholder': 'city'}, choices=CITY),
             'country': TextInput(attrs={'class': 'input', 'placholder': 'country'}),

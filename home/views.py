@@ -15,9 +15,9 @@ def index(request):
     setting = Setting.objects.get(pk=1)
     sliderdata = Blog.objects.all()[:4]
     category = Category.objects.all()
-    homeblogs = Blog.objects.all()[:4]
-    lastblogs = Blog.objects.all().order_by('-id')[:4]
-    randomblogs = Blog.objects.all().order_by('?')[:4]
+    homeblogs = Blog.objects.filter( status='True')[:4]
+    lastblogs = Blog.objects.filter( status='True').order_by('-id')[:4]
+    randomblogs = Blog.objects.filter( status='True').order_by('?')[:4]
 
     context = {'setting': setting,
                'category': category,
@@ -74,10 +74,10 @@ def iletisim(request):
     return render(request, 'iletisim.html', context)
 
 
-def category_blogs(request,id,slug):
+def category_blogs(request, id, slug):
     category = Category.objects.all()
     categorydata = Category.objects.get(pk=id)
-    blogs = Blog.objects.filter(category_id=id)
+    blogs = Blog.objects.filter(category_id=id, status='True')
     context = {'blogs': blogs,
                'category': category,
                'categorydata': categorydata
@@ -108,9 +108,9 @@ def blog_search(request):
             catid = form.cleaned_data['catid']  # formdan bilgiyi al
 
             if catid == 0:
-                blogs = Blog.objects.filter(title__icontains=query)
+                blogs = Blog.objects.filter(title__icontains=query, status='True')
             else:
-                blogs = Blog.objects.filter(title__icontains=query,category_id=catid)
+                blogs = Blog.objects.filter(title__icontains=query,category_id=catid, status='True')
 
             context = {'blogs': blogs,
                        'category': category,
