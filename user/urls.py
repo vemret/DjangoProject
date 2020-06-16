@@ -13,6 +13,8 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('blogedit/<int:id>', views.blogedit, name='blogedit'),
     path('blogdelete/<int:id>', views.blogdelete, name='blogdelete'),
+    path('blogaddimage/<int:id>', views.blogaddimage, name='blogaddimage'),
+
 
 
 

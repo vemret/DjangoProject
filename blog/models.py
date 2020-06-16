@@ -133,3 +133,7 @@ class BlogForm(ModelForm):
         }
 
 
+class BlogImageForm(ModelForm):
+    class Meta:
+        model = Images
+        fields = ['title', 'image']

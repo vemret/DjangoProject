@@ -61,6 +61,7 @@
                                                 <th>Resim</th>
                                                 <th>Başlık</th>
                                                 <th>Kategori</th>
+                                                <th>Galeri</th>
                                                 <th>Durum</th>
                                                 <th>Tarih</th>
                                                 <th>Detay</th>
@@ -75,6 +76,7 @@
                                                     </td>
                                                     <td><a href="/blog/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></td>
                                                     <td>{{rs.category}}</td>
+                                                    <td><a href="javascript:;" onclick="window.open('/user/blogaddimage/{{ rs.id }}','gallery','height=600,width=800,top=50,left=150')"><i class="fa-file-photo-o"></i>Galeri</a></td>
                                                     <td>{{rs.status}}</td>
                                                     <td>{{rs.create_at}}</td>
                                                     <td><a class="btn" href="/user/blogedit/{{ rs.id }}">Edit</a></td>
