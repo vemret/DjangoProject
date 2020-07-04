@@ -21,86 +21,36 @@
                             </article><!-- /.post -->
                         {% endfor %}
                     </div><!-- /.masonry-posts -->
-
-                    <div class="btn-container"><a href="#" class="btn load-more">Load more</a></div><!-- /.btn-container -->
                 </div>
 
                 <div class="col-sm-4">
                     <aside class="sidebar text-center">
-                        <div class="widget widget_about_author">
-                            <h3 class="widget-title">About me</h3><!-- /.widget-title -->
-                            <div class="widget-details">
-                                <div class="author-avatar"><img src="{% static 'images/sidebar/a.jpg'%}" alt="Avatar" class="img-circle"></div><!-- /.author-avatar -->
-                                <p>
-                                    Ahasellus rhoncus laoreet odio, sit amet rutrum metus aliquet quis. Sed sed nulla erat. Curabitur ullamcorper dum tortor.
-                                </p>
-                                <div class="author-social">
-                                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                </div><!-- /.author-social -->
-                            </div><!-- /.widget-details -->
-                        </div><!-- /.widget -->
-
-                        <div class="widget widget_newsletter">
-                            <h3 class="widget-title">Newsletter</h3><!-- /.widget-title -->
-                            <div class="widget-details">
-                                <form class="mc4wp-form" method="post">
-                                    <div class="mc4wp-form-fields">
-                                        <input class="form-control" type="email" name="EMAIL" placeholder="Email Address" required="">
-                                        <input type="submit" class="form-control" name="submit" value="Subscribe">
-                                    </div>
-                                    <div class="mc4wp-response"></div>
-                                </form>
-                            </div><!-- /.widget-details -->
-                        </div><!-- /.widget -->
-
-                        <div class="widget widget_insta_feed">
-                            <h3 class="widget-title">Instagram</h3><!-- /.widget-title -->
-                            <div class="widget-details">
-                                <a href="#"><img src="{% static 'images/sidebar/1.jpg'%}" alt="Instagram Image"></a>
-                                <a href="#"><img src="{% static 'images/sidebar/2.jpg'%}" alt="Instagram Image"></a>
-                                <a href="#"><img src="{% static 'images/sidebar/3.jpg'%}" alt="Instagram Image"></a>
-                                <a href="#"><img src="{% static 'images/sidebar/4.jpg'%}" alt="Instagram Image"></a>
-                                <a href="#"><img src="{% static 'images/sidebar/5.jpg'%}" alt="Instagram Image"></a>
-                                <a href="#"><img src="{% static 'images/sidebar/6.jpg'%}" alt="Instagram Image"></a>
-                                <a href="#"><img src="{% static 'images/sidebar/7.jpg'%}" alt="Instagram Image"></a>
-                                <a href="#"><img src="{% static 'images/sidebar/8.jpg'%}" alt="Instagram Image"></a>
-                                <a href="#"><img src="{% static 'images/sidebar/9.jpg'%}" alt="Instagram Image"></a>
-                            </div><!-- /.widget-details -->
-                        </div><!-- /.widget -->
-
                         <div class="widget widget_recent_posts">
-                            <h3 class="widget-title">Recent Posts</h3><!-- /.widget-title -->
+                            <h3 class="widget-title">Senin için Seçtiklerimiz</h3><!-- /.widget-title -->
                             <div class="widget-details">
+                                {% for rs in randomblogs %}
                                 <article class="post type-post media">
-                                    <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a1.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
+                                    <div class="entry-thumbnail media-left pull-left"><img src="{{ rs.image.url }}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
                                     <div class="entry-content media-body">
-                                        <h3 class="entry-title"><a href="standard.html">Good morning World</a></h3><!-- /.entry-title -->
-                                        <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
+                                        <h3 class="entry-title"><a href="/blog/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h3><!-- /.entry-title -->
+                                            <span class="time">{{ rs.category }}</span><!-- /.time -->
                                     </div><!-- /.entry-content -->
                                 </article><!-- /.post -->
+                                {% endfor %}
+                            </div><!-- /.widget-details -->
+                        </div><!-- /.widget -->
+                    <div class="widget widget_recent_posts">
+                            <h3 class="widget-title">En Çok Okunanlar</h3><!-- /.widget-title -->
+                            <div class="widget-details">
+                                {% for rs in homeblogs %}
                                 <article class="post type-post media">
-                                    <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a2.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
+                                    <div class="entry-thumbnail media-left pull-left"><img src="{{ rs.image.url }}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
                                     <div class="entry-content media-body">
-                                        <h3 class="entry-title"><a href="standard.html">Hitchhog is dangerous?</a></h3><!-- /.entry-title -->
-                                        <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
+                                        <h3 class="entry-title"><a href="/blog/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h3><!-- /.entry-title -->
+                                            <span class="time">{{ rs.category }}</span><!-- /.time -->
                                     </div><!-- /.entry-content -->
                                 </article><!-- /.post -->
-                                <article class="post type-post media">
-                                    <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a3.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
-                                    <div class="entry-content media-body">
-                                        <h3 class="entry-title"><a href="standard.html">Dream on Zanzibar</a></h3><!-- /.entry-title -->
-                                        <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
-                                    </div><!-- /.entry-content -->
-                                </article><!-- /.post -->
-                                <article class="post type-post media">
-                                    <div class="entry-thumbnail media-left pull-left"><img src="{% static 'images/sidebar/a4.jpg'%}" alt="Thumb Image"></div><!-- /.entry-thumbnail -->
-                                    <div class="entry-content media-body">
-                                        <h3 class="entry-title"><a href="standard.html">Happy Road Trip</a></h3><!-- /.entry-title -->
-                                        <span class="time"><time datetime="2017-12-05">May 12, 2017</time></span><!-- /.time -->
-                                    </div><!-- /.entry-content -->
-                                </article><!-- /.post -->
+                                {% endfor %}
                             </div><!-- /.widget-details -->
                         </div><!-- /.widget -->
 

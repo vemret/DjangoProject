@@ -1,108 +1,29 @@
 {% load static %}
 {% if page %}
+    <div class="col-sm-2">
 
+        <div class="container">
 
+            <div class="sidenav">
 
+                {% load mptt_tags %}
 
+                {% recursetree category %}<div>
+                    <button class="dropdown-btn">{% if node.is_leaf_node %}<a href="/category/{{ node.id }}/{{ node.slug }}">{% endif %}
+                        {{ node.title }}</a>{% if not node.is_leaf_node %}<i class="fa fa-caret-down"></i>{% endif %}
+                    </button>
+                    <div class="dropdown-container">
+                        {% if not node.is_leaf_node %}
 
+                            {{ children }}
 
- <div class="col-sm-2">
-
- <!--<div class="sidenav">
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#clients">Clients</a>
-  <a href="#contact">Contact</a>
-  <button class="dropdown-btn">Dropdown
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-  <a href="#contact">Search</a>
-</div> -->
-<div class="container">
-
-<div class="sidenav">
-
-        {% load mptt_tags %}
-
-    {% recursetree category %}<div>
-        <button class="dropdown-btn">{% if node.is_leaf_node %}<a href="/category/{{ node.id }}/{{ node.slug }}">{% endif %}
-            {{ node.title }}</a>{% if not node.is_leaf_node %}<i class="fa fa-caret-down"></i>{% endif %}
-        </button>
-    <div class="dropdown-container">
-            {% if not node.is_leaf_node %}
-
-                   {{ children }}
-
-            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endrecursetree %}
+            </div>
         </div>
-        </div>
-    {% endrecursetree %}
-
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#clients">Clients</a>
-  <a href="#contact">Contact</a>
-  <button class="dropdown-btn">Dropdown
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-  <a href="#contact">Search</a>
-</div>
-
-
-</div>
-
-
-
-
-
-<!--<header class="masthead">
-            <div class="header-top">
-   <div class="container">
-       <nav class="navbar navbar-default">
-  <div class="sidenav">
-
-      <ul class="nav navbar-nav">
-    <li class="menu-item menu-item-has-children">
-        <a href="#">About</a>
-                                <ul class="sub-menu children">
-                                    <li><a href="index-01.html">Home 01</a></li>
-                                    <li><a href="index-02.html">Home 02</a></li>
-                                    <li><a href="index-03.html">Home 03</a></li>
-                                    <li><a href="index-04.html">Home 04</a></li>
-                                    <li><a href="index-05.html">Home 05</a></li>
-                                </ul>
-    </li>
-          <li class="menu-item menu-item-has-children active">
-        <a href="#">About</a>
-                                <ul class="sub-menu children">
-                                    <li><a href="index-01.html">Home 01</a></li>
-                                    <li><a href="index-02.html">Home 02</a></li>
-                                    <li><a href="index-03.html">Home 03</a></li>
-                                    <li><a href="index-04.html">Home 04</a></li>
-                                    <li><a href="index-05.html">Home 05</a></li>
-                                </ul>
-    </li>
-    <li><a class="menu-item" href="#services">Services</a></li>
-    <li><a class="menu-item" href="#clients">Clients</a></li>
-    <li><a class="menu-item" href="#contact">Contact</a></li>
-      </ul>
-
-  </div>
-           </nav>
-      </div>
-      </div>
-</header> -->
- </div>
+    </div>
 {% endif %}
 
 

@@ -13,7 +13,30 @@
 {% endblock %}
 
 {% block content %}
+<div class="col-sm-2">
 
+        <div class="container">
+
+            <div class="sidenav">
+
+                {% load mptt_tags %}
+
+                {% recursetree category %}<div>
+                    <button class="dropdown-btn">{% if node.is_leaf_node %}<a href="/category/{{ node.id }}/{{ node.slug }}">{% endif %}
+                        {{ node.title }}</a>{% if not node.is_leaf_node %}<i class="fa fa-caret-down"></i>{% endif %}
+                    </button>
+                    <div class="dropdown-container">
+                        {% if not node.is_leaf_node %}
+
+                            {{ children }}
+
+                        {% endif %}
+                    </div>
+                </div>
+                {% endrecursetree %}
+            </div>
+        </div>
+    </div>
     <section class="main-content">
         <div class="padding">
             <div class="container">

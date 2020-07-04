@@ -13,11 +13,12 @@ from home.models import Setting, ContactFormMessage, ContactFormm, UserProfile, 
 
 def index(request):
     setting = Setting.objects.get(pk=1)
-    sliderdata = Blog.objects.all()[:4]
+    sliderdata = Blog.objects.filter( status='True')[:5]
     category = Category.objects.all()
-    homeblogs = Blog.objects.filter( status='True')[:4]
-    lastblogs = Blog.objects.filter( status='True').order_by('-id')[:4]
-    randomblogs = Blog.objects.filter( status='True').order_by('?')[:4]
+    homeblogs = Blog.objects.filter( status='True')[:5]
+    lastblogs = Blog.objects.filter( status='True').order_by('-id')[:6]
+    randomblogs = Blog.objects.filter( status='True').order_by('?')[:8]
+
 
     context = {'setting': setting,
                'category': category,
